@@ -4,13 +4,26 @@
       <div class="phone-header">
         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/vue_gram_logo_cp.png" />
       </div>
-      <phone-body :posts="posts" :filters="filters" />
+      <phone-body
+        :step="step"
+        :posts="posts"
+        :filters="filters"
+        :image="image"
+        :selectedFilter="selectedFilter"
+        v-model="caption" />
       <div class="phone-footer">
        <div class="home-cta">
         <i class="fas fa-home fa-lg"></i>
        </div>
        <div class="upload-cta">
-        <i class="far fa-plus-square fa-lg"></i>
+         <input type="file"
+          name="file"
+          id="file"
+          class="inputfile"
+          @change="uploadImage" />
+          <label for="file">
+            <i class="far fa-plus-square fa-lg"></i>
+          </label>
        </div>
       </div>
     </div>
@@ -30,8 +43,12 @@ export default {
   },
   data () {
     return {
+      step: 1,
       posts,
-      filters
+      filters,
+      image: '',
+      selectedFilter: '',
+      caption: ''
     }
   }
 }
