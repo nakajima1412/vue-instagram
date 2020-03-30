@@ -50,6 +50,22 @@ export default {
       selectedFilter: '',
       caption: ''
     }
+  },
+  methods: {
+    uploadImage (evt) {
+      const files = evt.target.files
+      if (!files.length) return
+
+      const reader = new FileReader()
+      reader.readAsDataURL(files[0])
+      reader.onload = evt => {
+        this.image = evt.target.result
+        this.step = 2
+      }
+
+      // To enable reuploading of same files in Chrome
+      document.querySelector('#file').value = ''
+    }
   }
 }
 </script>
