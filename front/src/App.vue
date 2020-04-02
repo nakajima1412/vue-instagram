@@ -35,6 +35,7 @@ import PhoneBody from './components/PhoneBody'
 
 import posts from './data/posts'
 import filters from './data/filters'
+import EventBus from './event-bus'
 
 export default {
   name: 'App',
@@ -50,6 +51,11 @@ export default {
       selectedFilter: '',
       caption: ''
     }
+  },
+  created () {
+    EventBus.$on('filter-selected', evt => {
+      this.selectedFilter = evt.filter
+    })
   },
   methods: {
     uploadImage (evt) {
