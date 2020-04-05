@@ -8,6 +8,11 @@
           @click="goToHome">
           Cancel
         </a>
+        <a class="next-cta"
+          v-if="step === 2"
+          @click="step++">
+          Next
+        </a>
       </div>
       <phone-body
         :step="step"
@@ -25,7 +30,8 @@
           name="file"
           id="file"
           class="inputfile"
-          @change="uploadImage" />
+          @change="uploadImage"
+          :desabled="step !== 1" />
           <label for="file">
             <i class="far fa-plus-square fa-lg"></i>
           </label>
