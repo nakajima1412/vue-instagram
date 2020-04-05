@@ -17,7 +17,7 @@
         :selectedFilter="selectedFilter"
         v-model="caption" />
       <div class="phone-footer">
-       <div class="home-cta">
+       <div class="home-cta" @click="goToHome">
         <i class="fas fa-home fa-lg"></i>
        </div>
        <div class="upload-cta">
