@@ -3,6 +3,11 @@
     <div class="app-phone">
       <div class="phone-header">
         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/vue_gram_logo_cp.png" />
+        <a class="cancel-cta"
+          v-if="step === 2 || step === 3"
+          @click="goToHome">
+          Cancel
+        </a>
       </div>
       <phone-body
         :step="step"
@@ -58,6 +63,12 @@ export default {
     })
   },
   methods: {
+    goToHome () {
+      this.image = ''
+      this.selectedFilter = ''
+      this.caption = ''
+      this.step = 1
+    },
     uploadImage (evt) {
       const files = evt.target.files
       if (!files.length) return
